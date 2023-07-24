@@ -17,5 +17,7 @@ int main(int argc, char *argv[]) {
     else
         rf_print_all_flags(&ctx);
 
+    rf_free_context(&ctx);
+
     return 0;
 }
