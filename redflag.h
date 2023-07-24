@@ -43,15 +43,17 @@ typedef struct rf_context_t {
 
 void rf_init_context(rf_context_t *ctx);
 void rf_free_context(rf_context_t *ctx);
-void rf_print_all_flags(rf_context_t *ctx);
+
 void rf_parse_flags(rf_context_t *ctx, int argc, char **argv);
+
 void rf_print_flag(rf_flag_t *flag);
+void rf_print_all_flags(rf_context_t *ctx);
+void rf_print_options(rf_context_t *ctx);
 
 rf_flag_t *rf_flag_bool(rf_context_t *ctx, const char *name, const char *description, bool default_value);
 rf_flag_t *rf_flag_int(rf_context_t *ctx, const char *name, const char *description, int default_value);
 rf_flag_t *rf_flag_float(rf_context_t *ctx, const char *name, const char *description, float default_value);
 rf_flag_t *rf_flag_str(rf_context_t *ctx, const char *name, const char *description, char *default_value);
-void rf_print_options(rf_context_t *ctx);
 
 #ifdef REDFLAG_IMPLEMENTATION
 
@@ -138,14 +140,6 @@ static rf_flag_t *_rf_create_flag(rf_context_t *ctx, const char *name, const cha
     return flag;
 }
 
-void rf_print_all_flags(rf_context_t *ctx) {
-    rf_flag_t *flag = ctx->head_flag;
-    while(flag != NULL) {
-        rf_print_flag(flag);
-        flag = flag->next;
-    }
-}
-
 void rf_print_flag(rf_flag_t *flag) {
     printf("%s - %s = ", flag->name, flag->description);
     switch(flag->type) {
@@ -168,6 +162,14 @@ void rf_print_flag(rf_flag_t *flag) {
         default:
             printf("THIS OPTIONS HAS A INVALID TYPE!\n");
             break;
+    }
+}
+
+void rf_print_all_flags(rf_context_t *ctx) {
+    rf_flag_t *flag = ctx->head_flag;
+    while(flag != NULL) {
+        rf_print_flag(flag);
+        flag = flag->next;
     }
 }
 
