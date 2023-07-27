@@ -1,5 +1,6 @@
 # RedFlag
 stb-style **c99** library for handling flags in CLI applications.
+![screenshot](.github/example2.png)
 
 # Example
 See ```example.c```
