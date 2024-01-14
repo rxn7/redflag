@@ -225,7 +225,7 @@ void rf_print_options(rf_context_t *ctx) {
                 break;
 
             default:
-                printf("        THIS OPTIONS HAS A INVALID TYPE!\n");
+                printf("        THIS OPTIONS HAS AN INVALID TYPE!\n");
                 break;
         }
 
